@@ -26,4 +26,24 @@ This repository is a collection of code that accompanies a [video series](https:
 | 12      | Configure Plugins from FilamentPHP |
 | 13      | How to Deploy a FilamentPHP Project on Hostinger  |
 
+## Simple Deploy Script
+```
+git pull
+cp .env.example .env
+php artisan key:generate
+composer install --no-dev --optimize-autoloader
+php artisan optimize
+php artisan route:cache
+php artisan cache:clear
+php artisan migrate
+```
+
+## .htaccess script
+```
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+```
+
 For more information about FilamentPHP, please visit the [official website](https://filamentphp.com/).
